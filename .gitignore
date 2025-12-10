@@ -15,6 +15,7 @@
 *.exe
 *.log
 *.tlog/
+*.pch
 *.vcxproj.user
 *.vcxproj.filters
 *.pbxproj.user
