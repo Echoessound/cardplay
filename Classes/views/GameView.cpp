@@ -30,7 +30,7 @@ bool GameView::init()
         return false;
     }
 
-    // Create background (optional - comment out if not needed)
+    // Create background 
     createBackground();
 
     // Create container nodes for playfield and stack areas.
@@ -62,25 +62,25 @@ bool GameView::initWithModel(const GameModel* model)
 
 void GameView::createBackground()
 {
-    // Option 1: Use a background image
-    // Replace "res/background.png" with your background image path
-    // _backgroundSprite = Sprite::create("res/background.png");
-    // if (_backgroundSprite)
-    // {
-    //     const auto size = Director::getInstance()->getVisibleSize();
-    //     _backgroundSprite->setPosition(Vec2(size.width * 0.5f, size.height * 0.5f));
-    //     _backgroundSprite->setContentSize(size);
-    //     addChild(_backgroundSprite, -1); // Add to back layer
-    // }
+    //option1: Use a background image
+    // Replace "res/background.png" 
+    _backgroundSprite = Sprite::create("res/background.jpg");
+    if (_backgroundSprite)
+     {
+        const auto size = Director::getInstance()->getVisibleSize();
+        _backgroundSprite->setPosition(Vec2(size.width * 0.5f, size.height * 0.5f));
+        _backgroundSprite->setContentSize(size);
+        addChild(_backgroundSprite, -1); 
+    }
 
     // Option 2: Use a solid color background
-    const auto size = Director::getInstance()->getVisibleSize();
-    auto layerColor = LayerColor::create(Color4B(34, 139, 34, 255), size.width, size.height);
-    if (layerColor)
-    {
-        layerColor->setPosition(Vec2::ZERO);
-        addChild(layerColor, -1); // Add to back layer
-    }
+    //const auto size = Director::getInstance()->getVisibleSize();
+    //auto layerColor = LayerColor::create(Color4B(34, 139, 34, 255), size.width, size.height);
+    //if (layerColor)
+    //{
+        //layerColor->setPosition(Vec2::ZERO);
+        //addChild(layerColor, -1); // Add to back layer
+    //}
 }
 
 void GameView::createUndoButton()
@@ -128,7 +128,7 @@ void GameView::createOrUpdateCardView(const GameModel& model)
         view->setCardSprite(sprite);
         view->applyModel(c);
 
-        // Determine which container to attach to.
+        // Determine which container
         Node* parent = c.inPlayfield ? _playfieldLayer : _stackLayer;
         parent->addChild(view);
 

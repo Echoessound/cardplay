@@ -1,0 +1,123 @@
+# Build outputs
+build/
+bin/
+libs/
+*.o
+*.obj
+*.a
+*.lib
+*.dll
+*.so
+*.dylib
+*.exe
+
+# IDE files
+.vs/
+.vscode/
+.idea/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+*.vcxproj.user
+*.vcxproj.filters
+*.swp
+*.swo
+*~
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Visual Studio
+*.pdb
+*.ilk
+*.log
+*.tlog
+*.idb
+*.ipdb
+*.exp
+*.sdf
+*.opensdf
+*.db
+*.opendb
+Debug/
+Release/
+x64/
+x86/
+Win32/
+*.aps
+*.ncb
+*.plg
+*.opt
+*.clw
+*.tags
+*.tags_sorted_by_file
+*.vcproj.user
+*.vcproj.filters
+*.vcproj
+
+# Xcode
+*.xcodeproj/*
+!*.xcodeproj/project.pbxproj
+!*.xcodeproj/xcshareddata/
+*.xcworkspace
+!*.xcworkspace/contents.xcworkspacedata
+*.xcuserdata
+*.xcuserstate
+project.xcworkspace
+xcuserdata/
+DerivedData/
+
+# Android
+*.apk
+*.ap_
+*.dex
+*.class
+bin/
+gen/
+out/
+.gradle/
+local.properties
+proj.android/.gradle/
+proj.android/.idea/
+proj.android/app/build/
+proj.android/app/.cxx/
+proj.android/.externalNativeBuild/
+proj.android/captures/
+
+# CMake
+CMakeCache.txt
+CMakeFiles/
+cmake_install.cmake
+Makefile
+*.cmake
+!CMakeLists.txt
+!**/CMakeLists.txt
+
+# Cocos2d-x
+cocos2d/build/
+cocos2d/external/**/*.a
+cocos2d/external/**/*.lib
+cocos2d/external/**/*.dll
+cocos2d/external/**/*.so
+cocos2d/external/**/*.dylib
+cocos2d/external/**/*.obj
+
+# Project specific
+proj.win32/Debug.win32/
+proj.win32/Release.win32/
+proj.win32/*.zip
+proj.win32/文档内exe文件为测试入口/
+
+# Temporary files
+*.tmp
+*.bak
+*.swp
+*~
+.#*
+
+# Logs
+*.log
+
