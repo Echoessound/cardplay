@@ -104,6 +104,9 @@ cocos2d/external/**/*.dll
 cocos2d/external/**/*.so
 cocos2d/external/**/*.dylib
 cocos2d/external/**/*.obj
+**/Debug.win32/
+**/Release.win32/
+*.pch
 
 # Project specific
 proj.win32/Debug.win32/
