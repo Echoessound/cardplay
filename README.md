@@ -10,7 +10,6 @@
 
 - **游戏引擎**: Cocos2d-x
 - **编程语言**: C++
-- **构建系统**: CMake
 - **平台支持**: Windows, Android, iOS, Linux
 
 ## 项目结构
@@ -74,38 +73,6 @@ cardpaly/
 
 使用 Visual Studio 打开 `proj.win32/cardpaly.sln` 进行编译。
 
-### Android
-
-```bash
-cd proj.android
-./gradlew assembleDebug  # 或 assembleRelease
-```
-
-### iOS/macOS
-
-使用 Xcode 打开 `proj.ios_mac/cardpaly.xcodeproj` 进行编译。
-
-### Linux
-
-```bash
-mkdir build && cd build
-cmake ..
-make
-```
-
-## 运行说明
-
-### Windows
-运行编译后的可执行文件，或使用 Visual Studio 直接运行。
-
-### Android
-```bash
-cd proj.android
-./gradlew installDebug
-```
-
-### iOS
-使用 Xcode 运行到模拟器或真机。
 
 ## 扩展开发
 
@@ -126,18 +93,5 @@ cd proj.android
 
 - Cocos2d-x (已包含在项目中)
 - CMake 3.6+
-- 各平台对应的开发工具链
-
-## 许可证
-
-请参考项目中的许可证文件。
-
-## 贡献
-
-欢迎提交 Issue 和 Pull Request！
-
-## 联系方式
-
-如有问题，请通过 GitHub Issues 联系。
 
 
