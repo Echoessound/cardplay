@@ -8,7 +8,7 @@ USING_NS_CC;
 
 namespace
 {
-    // Simplified layout constants.
+    // 简化的布局常量。
     const float kPlayfieldHeight = 1500.0f;
     const float kStackHeight = 580.0f;
 }
@@ -30,10 +30,10 @@ bool GameView::init()
         return false;
     }
 
-    // Create background 
+    // 创建背景
     createBackground();
 
-    // Create container nodes for playfield and stack areas.
+    // 为牌区和备用堆区域创建容器节点。
     const auto size = Director::getInstance()->getVisibleSize();
 
     _playfieldLayer = Node::create();
@@ -62,8 +62,8 @@ bool GameView::initWithModel(const GameModel* model)
 
 void GameView::createBackground()
 {
-    //option1: Use a background image
-    // Replace "res/background.png" 
+    // 选项1：使用背景图像
+    // 替换 "res/background.png" 
     _backgroundSprite = Sprite::create("res/background.jpg");
     if (_backgroundSprite)
      {
@@ -73,7 +73,7 @@ void GameView::createBackground()
         addChild(_backgroundSprite, -1); 
     }
 
-    // Option 2: Use a solid color background
+    // 选项 2：使用纯色背景
     //const auto size = Director::getInstance()->getVisibleSize();
     //auto layerColor = LayerColor::create(Color4B(34, 139, 34, 255), size.width, size.height);
     //if (layerColor)
@@ -109,7 +109,7 @@ void GameView::refreshAllCards()
         return;
     }
 
-    // Clean existing nodes.
+    // 清理现有节点。
     _playfieldLayer->removeAllChildren();
     _stackLayer->removeAllChildren();
     _cardViews.clear();
@@ -128,7 +128,7 @@ void GameView::createOrUpdateCardView(const GameModel& model)
         view->setCardSprite(sprite);
         view->applyModel(c);
 
-        // Determine which container
+        // 确定使用哪个容器
         Node* parent = c.inPlayfield ? _playfieldLayer : _stackLayer;
         parent->addChild(view);
 
@@ -139,7 +139,7 @@ void GameView::createOrUpdateCardView(const GameModel& model)
             {
                 return;
             }
-            // Route click callback based on model state.
+            // 根据模型状态路由点击回调。
             const CardModel* modelCard = _gameModel->findCard(cardId);
             if (!modelCard)
             {
@@ -177,21 +177,21 @@ void GameView::playMoveToStackTopAnimation(int fromCardId, int toCardId)
     auto fromView = fromIt->second;
     auto toView = toIt->second;
 
-    // Move onto the current stack-top card visual position.
+    // 移动到当前栈顶卡牌的视觉位置。
     Vec2 targetPos = toView->getPosition();
 
-    // If the two cards live under different parent layers (playfield vs stack),
-    // reparent the moving card into the target layer while keeping its visual
-    // world position, so it can cover the bottom card with correct y-baseline.
+    // 如果两张卡牌位于不同的父层（牌区 vs 备用堆），
+    // 将移动的卡牌重新父化到目标层，同时保持其视觉世界位置，
+    // 以便它可以用正确的 y 基线覆盖底部卡牌。
     Node* targetParent = toView->getParent();
     Node* sourceParent = fromView->getParent();
     if (targetParent && sourceParent && targetParent != sourceParent)
     {
-        // Preserve current world position to avoid jumps during reparent.
+        // 保留当前世界位置以避免重新父化时的跳跃。
         Vec2 worldCurrent = sourceParent->convertToWorldSpace(fromView->getPosition());
         Vec2 worldTarget = targetParent->convertToWorldSpace(targetPos);
 
-        fromView->retain(); // avoid accidental deletion during remove/add
+        fromView->retain(); // 避免在移除/添加时意外删除
         fromView->removeFromParent();
         targetParent->addChild(fromView);
         fromView->release();
@@ -200,10 +200,10 @@ void GameView::playMoveToStackTopAnimation(int fromCardId, int toCardId)
         targetPos = targetParent->convertToNodeSpace(worldTarget);
     }
 
-    // Ensure the newly selected card visually stays above the previous top card.
+    // 确保新选中的卡牌在视觉上保持在之前的栈顶卡牌之上。
     fromView->setLocalZOrder(toView->getLocalZOrder() + 1);
 
-    // Simple move animation without lambdas to avoid compiler issues.
+    // 简单的移动动画，不使用 lambda 以避免编译器问题。
     fromView->runAction(MoveTo::create(0.2f, targetPos));
 }
 
@@ -216,8 +216,8 @@ void GameView::playUndoMoveAnimation(int movingCardId, const Vec2& targetPos)
     }
     auto view = it->second;
 
-    // If the card needs to move back across layers (e.g., stack -> playfield),
-    // reparent based on model flags so the y-baseline matches the destination.
+    // 如果卡牌需要跨层移回（例如，备用堆 -> 牌区），
+    // 根据模型标志重新父化，以便 y 基线与目标匹配。
     Vec2 adjustedTarget = targetPos;
     Node* currentParent = view->getParent();
     Node* desiredParent = currentParent;

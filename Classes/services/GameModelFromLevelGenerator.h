@@ -4,9 +4,9 @@ class LevelConfig;
 class GameModel;
 
 /**
- * @brief Service that builds a runtime GameModel from a static LevelConfig.
+ * @brief 从静态 LevelConfig 构建运行时 GameModel 的服务。
  *
- * Stateless: only mutates the GameModel passed in.
+ * 无状态：仅修改传入的 GameModel。
  */
 class GameModelFromLevelGenerator
 {
@@ -15,10 +15,10 @@ public:
     ~GameModelFromLevelGenerator() = default;
 
     /**
-     * @brief Fill GameModel entries according to a LevelConfig.
-     * @param levelConfig Static configuration payload.
-     * @param gameModel   Runtime model to be mutated.
-     * @return True if generation succeeded.
+     * @brief 根据 LevelConfig 填充 GameModel 条目。
+     * @param levelConfig 静态配置数据。
+     * @param gameModel   要修改的运行时模型。
+     * @return 如果生成成功则返回 true。
      */
     bool generateGameModel(const LevelConfig& levelConfig, GameModel& gameModel);
 };

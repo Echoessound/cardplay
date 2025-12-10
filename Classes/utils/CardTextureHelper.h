@@ -4,20 +4,20 @@
 #include "models/CardEnums.h"
 
 /**
- * @brief Helper functions that return texture paths for card ranks and suits.
+ * @brief 返回卡牌点数和花色纹理路径的辅助函数。
  */
 namespace CardTextureHelper
 {
-    /// Whether suit should be rendered as red.
+    /// 花色是否应渲染为红色。
     bool isRedSuit(CardSuitType suit);
 
-    /// Texture path for the suit icon.
+    /// 花色图标的纹理路径。
     std::string getSuitTexture(CardSuitType suit);
 
-    /// Texture path for the small rank print (corner).
+    /// 小号点数纹理路径（角落）。
     std::string getSmallNumberTexture(CardFaceType face, CardSuitType suit);
 
-    /// Texture path for the large rank print (center).
+    /// 大号点数纹理路径（中心）。
     std::string getBigNumberTexture(CardFaceType face, CardSuitType suit);
 }
 

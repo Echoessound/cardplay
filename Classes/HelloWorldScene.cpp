@@ -54,7 +54,7 @@ void HelloWorld::onEnter()
         _gameController = new (std::nothrow) GameController();
         if (_gameController)
     {
-            // Start with level 1 by default
+            // 默认从关卡 1 开始
             _gameController->startGame(1, this);
         }
     }

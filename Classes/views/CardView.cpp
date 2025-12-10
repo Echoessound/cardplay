@@ -102,7 +102,7 @@ void CardView::drawCardFaces()
     const Size size = _sprite->getContentSize();
     const float margin = 20.0f;
 
-    // Big center rank.
+    // 中心大号点数。
     const std::string bigTexture = CardTextureHelper::getBigNumberTexture(_faceType, _suitType);
     if (auto centerRank = Sprite::create(bigTexture))
     {
@@ -110,7 +110,7 @@ void CardView::drawCardFaces()
         _sprite->addChild(centerRank);
     }
 
-    // Small rank textures in corners.
+    // 角落的小号点数纹理。
     const std::string smallTexture = CardTextureHelper::getSmallNumberTexture(_faceType, _suitType);
     Sprite* smallTop = nullptr;
     if (auto spriteTop = Sprite::create(smallTexture))
@@ -123,7 +123,7 @@ void CardView::drawCardFaces()
 
   
 
-    // Suit icons near corners.
+    // 靠近角落的花色图标。
     const std::string suitTexture = CardTextureHelper::getSuitTexture(_suitType);
     float topSuitY = size.height - margin * 2.0f;
     if (smallTop)

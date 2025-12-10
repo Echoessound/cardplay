@@ -1,20 +1,20 @@
 #pragma once
 
 /**
- * @brief Suits enumeration, aligned with CardSuitType in the requirement doc.
+ * @brief 花色枚举，与需求文档中的 CardSuitType 对齐。
  */
 enum CardSuitType
 {
     CST_NONE = -1,
-    CST_CLUBS,     ///< Clubs
-    CST_DIAMONDS,  ///< Diamonds
-    CST_HEARTS,    ///< Hearts
-    CST_SPADES,    ///< Spades
+    CST_CLUBS,     ///< 梅花
+    CST_DIAMONDS,  ///< 方块
+    CST_HEARTS,    ///< 红心
+    CST_SPADES,    ///< 黑桃
     CST_NUM_CARD_SUIT_TYPES
 };
 
 /**
- * @brief Rank enumeration, aligned with CardFaceType in the requirement doc.
+ * @brief 点数枚举，与需求文档中的 CardFaceType 对齐。
  */
 enum CardFaceType
 {

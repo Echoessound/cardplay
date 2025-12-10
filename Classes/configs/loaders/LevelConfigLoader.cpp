@@ -9,7 +9,7 @@ namespace
 {
     std::string buildLevelFilePath(int levelId)
     {
-        // Convention: level files live under Resources/res/level_x.json
+        // 约定：关卡文件位于 Resources/res/level_x.json
         char buf[64];
         snprintf(buf, sizeof(buf), "res/level_%d.json", levelId);
         return std::string(buf);
@@ -98,7 +98,7 @@ bool LevelConfigLoader::loadFromFile(const std::string& filePath, LevelConfig& o
             const int cardFace = item.HasMember("CardFace") ? item["CardFace"].GetInt() : -1;
             const int cardSuit = item.HasMember("CardSuit") ? item["CardSuit"].GetInt() : -1;
 
-            // Stack layout may still override positions; keep values optional.
+            // 备用堆布局仍可能覆盖位置；保持值为可选。
             Vec2 pos = Vec2::ZERO;
             if (item.HasMember("Position") && item["Position"].IsObject())
             {

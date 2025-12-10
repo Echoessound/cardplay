@@ -12,7 +12,7 @@ bool GameModelFromLevelGenerator::generateGameModel(const LevelConfig& levelConf
     gameModel.currentStackTopCardId = -1;
     gameModel.stackBasePosition = Vec2::ZERO;
 
-    // Build playfield cards first.
+    // 首先构建牌区卡牌。
     for (const auto& cfg : levelConfig.playfieldCards)
     {
         CardModel model;
@@ -27,7 +27,7 @@ bool GameModelFromLevelGenerator::generateGameModel(const LevelConfig& levelConf
         gameModel.cards.push_back(model);
     }
 
-    // Build stack cards; entries later in config are closer to stack top.
+    // 构建备用堆卡牌；配置中较晚的条目更接近栈顶。
     for (size_t i = 0; i < levelConfig.stackCards.size(); ++i)
     {
         const auto& cfg = levelConfig.stackCards[i];
@@ -47,7 +47,7 @@ bool GameModelFromLevelGenerator::generateGameModel(const LevelConfig& levelConf
         gameModel.cards.push_back(model);
     }
 
-    // Use the FIRST stack card position as the visual stack base position (initial bottom card).
+    // 使用第一个备用堆卡牌位置作为视觉栈基准位置（初始底部卡牌）。
     if (!levelConfig.stackCards.empty())
     {
         const auto& firstCfg = levelConfig.stackCards.front();

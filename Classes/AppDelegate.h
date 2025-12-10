@@ -28,9 +28,9 @@
 #include "cocos2d.h"
 
 /**
-@brief    The cocos2d Application.
+@brief    Cocos2d 应用程序。
 
-Private inheritance here hides part of interface from Director.
+私有继承隐藏了 Director 的部分接口。
 */
 class  AppDelegate : private cocos2d::Application
 {
@@ -41,21 +41,21 @@ public:
     virtual void initGLContextAttrs();
 
     /**
-    @brief    Implement Director and Scene init code here.
-    @return true    Initialize success, app continue.
-    @return false   Initialize failed, app terminate.
+    @brief    在此实现 Director 和 Scene 的初始化代码。
+    @return true    初始化成功，应用继续运行。
+    @return false   初始化失败，应用终止。
     */
     virtual bool applicationDidFinishLaunching();
 
     /**
-    @brief  Called when the application moves to the background
-    @param  the pointer of the application
+    @brief  当应用程序进入后台时调用
+    @param  应用程序的指针
     */
     virtual void applicationDidEnterBackground();
 
     /**
-    @brief  Called when the application reenters the foreground
-    @param  the pointer of the application
+    @brief  当应用程序重新进入前台时调用
+    @param  应用程序的指针
     */
     virtual void applicationWillEnterForeground();
 };

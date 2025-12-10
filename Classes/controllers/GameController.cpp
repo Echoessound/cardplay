@@ -154,17 +154,17 @@ bool GameController::handlePlayfieldCardClick(int cardId)
     int diff = static_cast<int>(clicked->faceType) - static_cast<int>(top->faceType);
     if (diff != 1 && diff != -1)
     {
-        // Rule not satisfied: faces must differ by exactly 1
+        // 规则不满足：点数必须相差恰好为 1
         return false;
     }
 
-    // Store pre-operation state
+    // 存储操作前的状态
     UndoRecord record;
     record.firstBefore = makeSnapshot(*top);
     record.secondBefore = makeSnapshot(*clicked);
     record.canUseSecond = true;
 
-    // Move the clicked playfield card onto the current stack-top card position
+    // 将被点击的牌区卡牌移动到当前栈顶卡牌的位置
     clicked->inPlayfield = false;
     clicked->inStack = true;
     clicked->isTopOfStack = true;
@@ -174,7 +174,7 @@ bool GameController::handlePlayfieldCardClick(int cardId)
 
     _gameModel->currentStackTopCardId = clicked->cardId;
 
-    // Store post-operation state
+    // 存储操作后的状态
     record.firstAfter = makeSnapshot(*top);
     record.secondAfter = makeSnapshot(*clicked);
 
@@ -206,7 +206,7 @@ bool GameController::handleStackCardClick(int cardId)
 
     if (clicked->isTopOfStack)
     {
-        // Ignore clicks on the current top card
+        // 忽略对当前栈顶卡牌的点击
         return false;
     }
 
@@ -216,13 +216,13 @@ bool GameController::handleStackCardClick(int cardId)
         return false;
     }
 
-    // Store pre-operation state
+    // 存储操作前的状态
     UndoRecord record;
     record.firstBefore = makeSnapshot(*top);
     record.secondBefore = makeSnapshot(*clicked);
     record.canUseSecond = true;
 
-    // Swap positions and top-of-stack flags to perform the replacement
+    // 交换位置和栈顶标志以执行替换
     Vec2 tempPos = top->position;
     top->position = clicked->position;
     clicked->position = tempPos;
@@ -231,7 +231,7 @@ bool GameController::handleStackCardClick(int cardId)
     clicked->isTopOfStack = true;
     _gameModel->currentStackTopCardId = clicked->cardId;
 
-    // Store post-operation state
+    // 存储操作后的状态
     record.firstAfter = makeSnapshot(*top);
     record.secondAfter = makeSnapshot(*clicked);
 
@@ -261,7 +261,7 @@ void GameController::handleUndo()
         return;
     }
 
-    // Restore the model using the saved snapshots
+    // 使用保存的快照恢复模型
     if (record.firstBefore.cardId >= 0)
     {
         if (auto* m = _gameModel->findCard(record.firstBefore.cardId))
@@ -294,7 +294,7 @@ void GameController::handleUndo()
         }
     }
 
-    // Simple animation: move the most recently moved card back
+    // 简单动画：将最近移动的卡牌移回
     if (_gameView && record.canUseSecond)
     {
         _gameView->playUndoMoveAnimation(

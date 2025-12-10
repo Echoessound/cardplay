@@ -4,7 +4,7 @@
 #include "cocos2d.h"
 
 /**
- * @brief Single card snapshot used to compare states before/after an operation.
+ * @brief 用于比较操作前后状态的单张卡牌快照。
  */
 struct CardStateSnapshot
 {
@@ -17,12 +17,12 @@ struct CardStateSnapshot
 };
 
 /**
- * @brief Undo record describing one reversible action.
+ * @brief 描述一个可逆操作的撤销记录。
  *
- * Simplified assumption: each action touches at most two cards.
- * - firstXXX usually points to the stack-top card leaving/entering the stack.
- * - secondXXX stands for the moving card (playfield or stack).
- * When an action involves only one card, set canUseSecond to false.
+ * 简化假设：每个操作最多涉及两张卡牌。
+ * - firstXXX 通常指向离开/进入备用堆的栈顶卡牌。
+ * - secondXXX 代表移动的卡牌（牌区或备用堆）。
+ * 当操作只涉及一张卡牌时，将 canUseSecond 设置为 false。
  */
 struct UndoRecord
 {
@@ -34,12 +34,12 @@ struct UndoRecord
 };
 
 /**
- * @brief Undo manager keeps a stack of UndoRecord instances.
+ * @brief 撤销管理器维护一个 UndoRecord 实例的栈。
  *
- * Responsibilities:
- * - Owned by controller, but does not depend on controller APIs.
- * - Lightweight and easy to test.
- * - Only stores UndoRecord structs rather than owning models.
+ * 职责：
+ * - 由控制器拥有，但不依赖于控制器 API。
+ * - 轻量级且易于测试。
+ * - 仅存储 UndoRecord 结构体，而不拥有模型。
  */
 class UndoManager
 {
@@ -47,16 +47,16 @@ public:
     UndoManager() = default;
     ~UndoManager() = default;
 
-    /// Push a record onto the stack.
+    /// 将一条记录压入栈。
     void pushRecord(const UndoRecord& record);
 
-    /// Pop latest record; returns false if stack is empty.
+    /// 弹出最新记录；如果栈为空则返回 false。
     bool popRecord(UndoRecord& outRecord);
 
-    /// Clear all records.
+    /// 清除所有记录。
     void clear();
 
-    /// Whether there is at least one undo entry.
+    /// 是否至少有一条撤销条目。
     bool hasRecord() const;
 
 private:

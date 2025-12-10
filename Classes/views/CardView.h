@@ -4,7 +4,7 @@
 #include "models/CardModel.h"
 
 /**
- * @brief Lightweight card view that renders a single card sprite and reports clicks.
+ * @brief 轻量级卡牌视图，渲染单张卡牌精灵并报告点击。
  */
 class CardView : public cocos2d::Node
 {
@@ -16,16 +16,16 @@ public:
 
     bool init() override;
 
-    /// Logical card identifier provided by controller/model.
+    /// 由控制器/模型提供的逻辑卡牌标识符。
     int cardId;
 
-    /// Assign background sprite (sample implementation reuses a shared texture).
+    /// 分配背景精灵（示例实现重用共享纹理）。
     void setCardSprite(cocos2d::Sprite* sprite);
 
-    /// Register click callback.
+    /// 注册点击回调。
     void setClickCallback(const std::function<void(int)>& cb);
 
-    /// Apply CardModel to render rank/suit overlays.
+    /// 应用 CardModel 以渲染点数/花色叠加层。
     void applyModel(const CardModel& model);
 
 private:

@@ -4,28 +4,28 @@
 #include "models/CardEnums.h"
 
 /**
- * @brief Runtime data model for a single card (no heavy logic).
+ * @brief 单张卡牌的运行时数据模型（无复杂逻辑）。
  */
 class CardModel
 {
 public:
-    int cardId;              ///< Logical unique identifier (mapped to view/undo).
-    CardFaceType faceType;   ///< Rank.
-    CardSuitType suitType;   ///< Suit.
+    int cardId;              ///< 逻辑唯一标识符（映射到视图/撤销）。
+    CardFaceType faceType;   ///< 点数。
+    CardSuitType suitType;   ///< 花色。
 
-    bool isFaceUp;           ///< Whether face-up.
-    bool inPlayfield;        ///< Whether inside playfield area.
-    bool inStack;            ///< Whether inside stack area.
-    bool isTopOfStack;       ///< Whether currently on top of stack.
+    bool isFaceUp;           ///< 是否正面朝上。
+    bool inPlayfield;        ///< 是否在牌区。
+    bool inStack;            ///< 是否在备用堆。
+    bool isTopOfStack;       ///< 是否当前为栈顶。
 
-    cocos2d::Vec2 position;  ///< Current world position (for persistence).
+    cocos2d::Vec2 position;  ///< 当前世界坐标（用于持久化）。
 
     CardModel();
 
-    /** Serialize into ValueMap for save data. */
+    /** 序列化为 ValueMap 用于保存数据。 */
     cocos2d::ValueMap toValueMap() const;
 
-    /** Deserialize from ValueMap to restore. */
+    /** 从 ValueMap 反序列化以恢复。 */
     void fromValueMap(const cocos2d::ValueMap& map);
 };
 

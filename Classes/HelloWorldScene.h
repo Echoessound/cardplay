@@ -30,11 +30,11 @@
 class GameController;
 
 /**
- * @brief Entry scene that owns the GameController.
+ * @brief 拥有 GameController 的入口场景。
  *
- * Responsibilities:
- * - Create and store the GameController instance.
- * - Boot the default level when onEnter is invoked.
+ * 职责：
+ * - 创建并存储 GameController 实例。
+ * - 在 onEnter 被调用时启动默认关卡。
  */
 class HelloWorld : public cocos2d::Scene
 {
